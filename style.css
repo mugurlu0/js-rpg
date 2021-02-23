@@ -1,6 +1,78 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+@media only screen and (orientation:portrait){
+    html{
+display: none;
+    }
+}
+@media only screen and (max-width:999px)and (orientation:landscape){
+   
+html{
+    touch-action: manipulation;
+    box-sizing: border-box;
+    
+    
+}
+main{
+position:absolute;
+top: 15rem;
+display:flex;
+left: 20%;
+}
+body{
+    background: linear-gradient(to right, rgb(83, 46, 46), rgb(216, 160, 38));
+    flex-direction: row;
+    font-family: 'Orbitron', sans-serif;
+    display:flex;
+    margin: auto;
+    
+}
 
+header h1{
+    margin-left: 35vw;
+    font-size: 50px;
+    
+}
+#buttons{
+    position: absolute;
+    bottom: 2%;
+    display: flex;
+}
+.playerOne{
+    margin-left: 5rem;
+}
+.playerTwo{
+   margin-left: 32rem;
+}
+    
+button{
+    border:  dashed 2px black;
+    background: linear-gradient(to right, rgba(207, 171, 10, 0.4), rgba(212, 18, 18, 0.2));
+}
+#vs{
+    text-align: center;
+    font-size: 50px;
+    position: relative;
+    margin-top: 50px;
+    text-shadow: 5px 2px 2px #7a7c80;
+}
+}
+#creationPanel{
+position: absolute;
+bottom: 5rem;
+display: flex;
+left: 5rem;
+}
+#characterOne{
+margin-right: 1rem;
+}
+#characterTwo{
+
+}
+
+
+@media only screen and (min-width: 1000px){
 html{
     height: 90vh;
     width: 100%;
@@ -109,4 +181,4 @@ select:focus{
 select:hover{
     background-color: #000;
     color:#A43931;
-}
+}}
