@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RPG</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Battle Dungeon</h1>
+        </header>
+        <main>
+            <div id="charOne">
+                <img id="charCarrousel" src="pics/no-char.png" alt="default">
+                <p id="item1"></p>
+                <p id="health1"></p>
+            </div>
+            <p id="vs">vs</p>
+            <div id="charTwo">
+                <img id="charCarrousel2" src="pics/no-char.png" alt="default">
+                <p id="item2"></p>
+                <p id="health2"></p>
+            </div>
+
+        </main>
+        <section id="creationPanel">
+            <form method="get" id="characterOne">
+                <input type="text" name="name" placeholder="your char's name here">
+                <select name="race" id="race1" onchange="charSelect()">
+                    <option value="vampire">vampire</option>
+                    <option value="orc">orc</option>
+                    <option value="human">human</option>
+                    <option value="elf">elf</option>
+                </select>
+
+                <select name="item" id="item1">
+                    <option value="sword">sword</option>
+                    <option value="bow">bow</option>
+                    <option value="boot">boot</option>
+                    <option value="staff">staff</option>
+                </select>
+                <button type="submit">confirm</button>
+            </form>
+
+
+            <form method="get" id="characterTwo">
+                <input type="text" name="name" placeholder="your char's name here">
+                <select name="race" id="race2" onchange="charSelect2()">
+                    <option value="vampire">vampire<img src="pics/vamp.png" alt="vampire drawing">
+                    </option>
+                    <option value="orc">orc</option>
+                    <option value="human">human</option>
+                    <option value="elf">elf</option>
+                </select>
+
+                <select name="item" id="item2">
+                    <option value="sword">sword</option>
+                    <option value="bow">bow</option>
+                    <option value="boot">boot</option>
+                    <option value="staff">staff</option>
+                </select>
+                <button type="submit">confirm</button>
+            </form>
+        </section>
+        <section id="buttons">
+            <div class="playerOne">
+                <button class="btn1">hit</button>
+                <button class="btn2">heal</button>
+                <button class="btn3">yield</button>
+            </div>
+            <div class="playerTwo">
+                <button class="btn4">hit</button>
+                <button class="btn5">heal</button>
+                <button class="btn6">yield</button>
+            </div>
+        </section>
+        <footer>
+            <div id="moveLog"></div>
+        </footer>
+
+        <script src="character.js"></script>
+        <script src="gamelogic.js"></script>
+    </body>
+</html>

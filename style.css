@@ -1,0 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+html{
+    height: 90vh;
+    width: 100%;
+}
+
+body{
+    background: #1D4350;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #A43931, #1D4350);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #A43931, #1D4350); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: grid;
+    grid-template-columns: 30px 1fr 1fr 30px;
+    gap: auto;
+    grid-template-rows: auto;
+}
+
+*{box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+header{
+    grid-column: 1/4;
+    grid-row: 1/2;
+    justify-self: center;
+    align-self: center; 
+}
+h1{
+    font-size: 35px;
+    color:rgb(46, 42, 42);
+}
+main{
+    grid-row: 2/3;
+    grid-column: 2/4;
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    justify-items: center;
+    
+}
+#buttons{
+    grid-column: 2/4    ;
+    grid-row:6/8;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+    justify-content:space-around;
+    margin: 60px;
+}/* 
+#playerOne{
+}
+#playerTwo{
+    
+} */
+
+#charOne img{
+    grid-column: 1/2;
+}
+#charTwo img{
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+#vs{
+    justify-self: center;
+    align-self: center;
+    font-size: 40px;
+}
+
+#creationPanel{
+    grid-column: 2/4;
+    grid-row:3/4;
+    display: grid;
+    grid-template-columns: repeat(2,1fr) ;
+    grid-template-rows: auto;
+    margin: 25px;
+
+}
+#characterOne{
+    grid-column: 1/2;
+    grid-row: inherit;
+}
+#characterTwo{
+    grid-column: 2/3;
+    grid-row: inherit;
+}
+
+button{
+    border: 2px dashed #000000;
+    background: transparent;
+    
+}
+
+button:hover {
+	background: rgb(209, 202, 202);
+	color: #A43931;
+}
+input{
+    background-color:transparent;
+}
+input:hover{
+    background-color: rgb(209, 202, 202);
+}
+select{
+    background-color:transparent;
+}
+select:focus{
+    background-color: rgb(209, 202, 202);
+}
+select:hover{
+    background-color: #000;
+    color:#A43931;
+}
