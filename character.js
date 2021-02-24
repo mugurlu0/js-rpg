@@ -49,3 +49,31 @@ function charSelect2() {
     }
 
 }
+
+function Character(name, race, item, health, hit, heal) {
+    this.name = name;
+    this.race = race;
+    this.item = item;
+    this.health = health;
+    this.hit = hit;
+    this.heal = heal;
+}
+
+// Create a Person object
+var name1 = document.getElementById("name1").value;
+// var race1 = document.getElementById("race1").value;
+var item1 = document.getElementById("item1").value;
+var PlayerOne = new Character(name1, race1, 50, 25, 95);
+
+
+document.getElementById("submit1").addEventListener("click", () => {
+    console.log((document.getElementById("name1").value));
+})
+
+document.getElementById("submit1").addEventListener("click", () => {
+    console.log((document.getElementById("race1").value));
+})
+
+document.getElementById("submit1").addEventListener("click", () => {
+    console.log(document.getElementById("item1").value);
+})

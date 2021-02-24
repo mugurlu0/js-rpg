@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>RPG</title>
         <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="mobile_first.css">
     </head>
     <body>
         <header>
@@ -13,8 +14,9 @@
         </header>
         <main>
             <div id="charOne">
-                <img id="charCarrousel" src="pics/no-char.png" alt="default">
-                <p id="item1"></p>
+                <img
+                id="charCarrousel" src="pics/no-char.png" alt="default">
+                <!-- <p id="item1"></p> -->
                 <p id="health1"></p>
             </div>
             <p id="vs">vs</p>
@@ -27,7 +29,7 @@
         </main>
         <section id="creationPanel">
             <form method="get" id="characterOne">
-                <input type="text" name="name" placeholder="your char's name here">
+                <input type="text" id="name1" name="name" placeholder="your char's name here" required>
                 <select name="race" id="race1" onchange="charSelect()">
                     <option value="vampire">vampire</option>
                     <option value="orc">orc</option>
@@ -41,12 +43,12 @@
                     <option value="boot">boot</option>
                     <option value="staff">staff</option>
                 </select>
-                <button type="submit">confirm</button>
+                <button id="submit1" type="button">confirm</button>
             </form>
 
 
             <form method="get" id="characterTwo">
-                <input type="text" name="name" placeholder="your char's name here">
+                <input type="text" id="name2" name="name" placeholder="your char's name here">
                 <select name="race" id="race2" onchange="charSelect2()">
                     <option value="vampire">vampire<img src="pics/vamp.png" alt="vampire drawing">
                     </option>
@@ -61,7 +63,7 @@
                     <option value="boot">boot</option>
                     <option value="staff">staff</option>
                 </select>
-                <button type="submit">confirm</button>
+                <button id="submit2" type="submit">confirm</button>
             </form>
         </section>
         <section id="buttons">

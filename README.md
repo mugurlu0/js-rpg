@@ -7,9 +7,11 @@
 For this consolidation challenge, we were expected to create a simple RPG using  JavaScript.
 
 ## Creator
+
 [UGURLU Mehmet](0https://github.com/mugurlu0).
 
 ## Materials and tools
-I based my work on HTML, CSS and JavaScript using Visual Studio Code as IDE.
-The character drawings are mine (I used paint ☺ to draw them).
 
+I based my work on HTML, CSS and JavaScript using Visual Studio Code as IDE.
+
+The character drawings are mine (I used paint ☺ to draw them).
