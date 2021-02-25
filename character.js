@@ -88,10 +88,6 @@ function charSelect2() {
     }
 
 }
-// document.getElementById("submit1").addEventListener("click", () => {
-//     var name1 = ((document.getElementById("name1").value));
-// })
-
 //create char object  in console
 var chaR1;
 document.getElementById("submit1").addEventListener("click", () => {
