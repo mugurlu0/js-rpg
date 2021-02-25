@@ -1,3 +1,26 @@
+//Use this script to generate your character
+function Person(race, item) {
+    this.race = race;
+    this.item = item;
+    this.currenthealth = 100;
+    this.maxHealth = 100;
+
+    this.min = 3;
+    this.maxDamage = 20;
+    this.maxHealing = 30;
+
+    this.heal = function () { };
+
+    this.damage = function () { };
+
+    this.totalDamage = this.damage();
+
+    this.displayChar = function () {
+        return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
+    };
+}
+
+//image display on select 1st player
 function charSelect() {
     var char = document.getElementById("race1").value;
     var img = document.getElementById("charCarrousel");
@@ -23,7 +46,7 @@ function charSelect() {
     }
 
 }
-
+//image display on select 2nd player
 function charSelect2() {
     var char2 = document.getElementById("race2").value;
     var img = document.getElementById("charCarrousel2");
@@ -49,31 +72,23 @@ function charSelect2() {
     }
 
 }
+// document.getElementById("submit1").addEventListener("click", () => {
+//     var name1 = ((document.getElementById("name1").value));
+// })
 
-function Character(name, race, item, health, hit, heal) {
-    this.name = name;
-    this.race = race;
-    this.item = item;
-    this.health = health;
-    this.hit = hit;
-    this.heal = heal;
-}
+// document.getElementById("submit1").addEventListener("click", () => {
+//     var race1 = ((document.getElementById("race1").value));
+// })
 
-// Create a Person object
-var name1 = document.getElementById("name1").value;
-// var race1 = document.getElementById("race1").value;
-var item1 = document.getElementById("item1").value;
-var PlayerOne = new Character(name1, race1, 50, 25, 95);
-
+// document.getElementById("submit1").addEventListener("click", () => {
+//     var item1 = (document.getElementById("item1").value);
+// })
 
 document.getElementById("submit1").addEventListener("click", () => {
-    console.log((document.getElementById("name1").value));
+    var chaR1 = new Person(race1.value, item1.value);
+    console.log(chaR1);
 })
-
-document.getElementById("submit1").addEventListener("click", () => {
-    console.log((document.getElementById("race1").value));
-})
-
-document.getElementById("submit1").addEventListener("click", () => {
-    console.log(document.getElementById("item1").value);
+document.getElementById("submit2").addEventListener("click", () => {
+    var chaR2 = new Person(race2.value, item2.value);
+    console.log(chaR2);
 })
