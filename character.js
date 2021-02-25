@@ -1,5 +1,6 @@
 //Use this script to generate your character
-function Person(race, item) {
+function Person(name, race, item) {
+    this.name = name;
     this.race = race;
     this.item = item;
     this.currenthealth = 100;
@@ -9,15 +10,30 @@ function Person(race, item) {
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function () { };
+    this.heal = function () {
+        var healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        return healPoints;
+    };
 
-    this.damage = function () { };
-
+    this.damage = function () {
+        var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
+        return damagePoints;
+    };
+    this.attack = function () { this.currentHealth -= this.damage(); }
     this.totalDamage = this.damage();
 
     this.displayChar = function () {
-        return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
+        return console.log(`I am ${this.name}: a ${this.race} who wields a ${this.item}, my total health point are ${this.maxHealth}`);
     };
+}
+probability30 = () => {
+    [true, false, false, true, false, true, false, false, false, false];
+
+    var index = Math.floor(Math.random() * probability30.length);
+    if (probability30[index] === true) {
+        return ("attack twice");
+    }
+    else { return ("normal attack"); }
 }
 
 //image display on select 1st player
@@ -76,11 +92,139 @@ function charSelect2() {
 //     var name1 = ((document.getElementById("name1").value));
 // })
 
+//create char object  in console
+var chaR1;
 document.getElementById("submit1").addEventListener("click", () => {
-    var chaR1 = new Person(race1.value, item1.value);
+    chaR1 = new Person(name1.value, race1.value, item1.value);
     console.log(chaR1);
 })
+var chaR2;
 document.getElementById("submit2").addEventListener("click", () => {
-    var chaR2 = new Person(race2.value, item2.value);
+    chaR2 = new Person(name2.value, race2.value, item2.value);
     console.log(chaR2);
 })
+
+//power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
+//when race is selected, health, heal and attack will be filled automatically.
+
+let raceSwitch1;
+document.getElementById("submit1").addEventListener("click", () => {
+    raceSwitch1 = ((document.getElementById("race1").value));;
+    switch (raceSwitch1) {
+        case 'orc':
+            chaR1.maxHealing *= 1.4;
+            console.log(`You are a ${raceSwitch1}.`);
+            break;
+        case 'vampire':
+            //click hit
+            this.attack *= 1.1;
+            chaR1.currentHealth = this.currentHealth + (0.1 * chaR2.currentHealth);
+            console.log(`You are a ${raceSwitch1}.`);
+            break;
+        case 'human':
+            console.log(`You are a ${raceSwitch1}.`);
+            break;
+        case 'elf':
+
+            console.log(`You are a ${raceSwitch1}.`);
+            break;
+        default:
+            console.log(`You are a ${raceSwitch1}.`);
+    }
+
+})
+
+
+
+//create another switch for items, the values of the item will be added to the char's object(dodge, heal, damage, attack twice)
+
+
+let itemSwitch1;
+document.getElementById("submit1").addEventListener("click", () => {
+    itemSwitch1 = (document.getElementById("item1").value);
+    switch (itemSwitch1) {
+        case 'sword':
+            chaR1.maxDamage *= 1.3;
+            console.log(`You have a ${itemSwitch1}.`);
+            break;
+        case 'bow':
+            console.log(`You have a ${itemSwitch1}.`);
+            break;
+        case 'boot':
+            console.log(`You have a ${itemSwitch1}.`);
+            break;
+        case 'staff':
+            chaR1.maxHealing *= 1.2;
+            console.log(`You have a ${itemSwitch1}.`);
+            break;
+        default:
+            console.log(`You have a ${itemSwitch1}.`);
+    }
+})
+
+// switches for 2nd char
+//power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
+//when race is selected, health, heal and attack will be filled automatically.
+
+let raceSwitch2;
+document.getElementById("submit2").addEventListener("click", () => {
+    raceSwitch2 = ((document.getElementById("race2").value));;
+    switch (raceSwitch2) {
+        case 'orc':
+            chaR2.maxHealing *= 1.4;
+            console.log(`You are a ${raceSwitch2}.`);
+            break;
+        case 'vampire':
+            console.log(`You are a ${raceSwitch2}.`);
+            break;
+        case 'human':
+            console.log(`You are a ${raceSwitch2}.`);
+            break;
+        case 'elf':
+            console.log(`You are a ${raceSwitch2}.`);
+            break;
+        default:
+            console.log(`You are a ${raceSwitch2}.`);
+    }
+
+})
+
+
+
+//create another switch for items, the values of the item will be added to the char's object(dodge, heal, damage, attack twice)
+
+
+let itemSwitch2;
+document.getElementById("submit2").addEventListener("click", () => {
+    itemSwitch2 = (document.getElementById("item2").value);
+    switch (itemSwitch2) {
+        case 'sword':
+            chaR2.maxDamage *= 1.3;
+            console.log(`You have a ${itemSwitch2}.`);
+            break;
+        case 'bow':
+            console.log(`You have a ${itemSwitch2}.`);
+            break;
+        case 'boot':
+            console.log(`You have a ${itemSwitch2}.`);
+            break;
+        case 'staff':
+            chaR2.maxHealing *= 1.2;
+            console.log(`You have a ${itemSwitch2}.`);
+            break;
+        default:
+            console.log(`You have a ${itemSwitch2}.`);
+    }
+})
+
+
+
+probability30 = () => {
+    [true, false, false, true, false, true, false, false, false, false];
+
+    var index = Math.floor(Math.random() * probability30.length);
+    if (probability30[index] === true) {
+        return ("attack twice");
+    }
+    else { return ("normal attack"); }
+}
