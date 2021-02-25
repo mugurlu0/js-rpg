@@ -76,14 +76,6 @@ function charSelect2() {
 //     var name1 = ((document.getElementById("name1").value));
 // })
 
-// document.getElementById("submit1").addEventListener("click", () => {
-//     var race1 = ((document.getElementById("race1").value));
-// })
-
-// document.getElementById("submit1").addEventListener("click", () => {
-//     var item1 = (document.getElementById("item1").value);
-// })
-
 document.getElementById("submit1").addEventListener("click", () => {
     var chaR1 = new Person(race1.value, item1.value);
     console.log(chaR1);
