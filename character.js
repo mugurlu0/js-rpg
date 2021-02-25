@@ -118,10 +118,15 @@ document.getElementById("submit1").addEventListener("click", () => {
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'human':
+            this.damage *= 0.8;
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'elf':
-
+            var deflect = probability30();
+            if (deflect === true) {
+                chaR1.damage = 0;
+                chaR1.attack = chaR2.attack / 2;
+            }
             console.log(`You are a ${raceSwitch1}.`);
             break;
         default:
@@ -144,9 +149,17 @@ document.getElementById("submit1").addEventListener("click", () => {
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'bow':
+            var attackTwice = probability30();
+            if (attackTwice === true) {
+                chaR1.attack = this.attack + this.attack;
+            }
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'boot':
+            var dodge = probability30();
+            if (dodge === true) {
+                chaR1.damage = 0;
+            }
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'staff':
@@ -215,12 +228,8 @@ document.getElementById("submit2").addEventListener("click", () => {
 
 
 
-probability30 = () => {
-    [true, false, false, true, false, true, false, false, false, false];
-
-    var index = Math.floor(Math.random() * probability30.length);
-    if (probability30[index] === true) {
-        return ("attack twice");
-    }
-    else { return ("normal attack"); }
+function probability30() {
+    var probability30Array = [true, false, false, true, false, true, false, false, false, false];
+    var random = Math.floor(Math.random() * probability30Array.length);
+    return probability30Array[random];
 }
