@@ -41,18 +41,20 @@ main{
 }
 #buttons{
     grid-column: 2/4    ;
-    grid-row:6/8;
+    grid-row:5/6;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     justify-content:space-around;
     margin: 60px;
-}/* 
+}
 #playerOne{
+    left: 
 }
 #playerTwo{
     
-} */
+    
+}
 
 #charOne img{
     grid-column: 1/2;
@@ -69,8 +71,7 @@ main{
 
 #creationPanel{
     grid-column: 2/4;
-    grid-row:3/4;
-    display: grid;
+    grid-row:5/6;
     grid-template-columns: repeat(2,1fr) ;
     grid-template-rows: auto;
     margin: 25px;
@@ -111,3 +112,16 @@ select:hover{
     background-color: #000;
     color:#A43931;
 }}
+
+#logContainer{
+    grid-column: 2/4;
+    grid-row: 8/9;
+    justify-self: center;
+    background-color: blanchedalmond;
+    padding-left: 300px;
+    padding-right: 300px;
+    /* margin: 40px; */
+}
+#moveLog{
+    display: flex;
+}

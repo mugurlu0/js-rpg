@@ -19,7 +19,9 @@ function Person(name, race, item) {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
-    this.attack = function () { this.currentHealth -= this.damage(); }
+    this.attack = function () {
+        this.currentHealth -= this.damage();
+    }
     this.totalDamage = this.damage();
 
     this.displayChar = function () {
@@ -32,8 +34,9 @@ probability30 = () => {
     var index = Math.floor(Math.random() * probability30.length);
     if (probability30[index] === true) {
         return ("attack twice");
+    } else {
+        return ("normal attack");
     }
-    else { return ("normal attack"); }
 }
 
 //image display on select 1st player
@@ -114,7 +117,7 @@ document.getElementById("submit1").addEventListener("click", () => {
         case 'vampire':
             //click hit
             this.attack *= 1.1;
-            chaR1.currentHealth = this.currentHealth + (0.1 * chaR2.currentHealth);
+            chaR1.currentHealth = chaR1.currentHealth + (0.1 * chaR2.currentHealth);
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'human':
@@ -233,3 +236,39 @@ function probability30() {
     var random = Math.floor(Math.random() * probability30Array.length);
     return probability30Array[random];
 }
+
+
+if (chaR1 == null && chaR2 == null) {
+    document.getElementById('logContainer').style.display = "none";
+    console.log("empty");
+}
+
+document.getElementById("submit2").addEventListener('click', () => {
+    if (chaR1.race.value != "" && chaR2.race.value != "") {
+        document.getElementById('logContainer').style.display = "block";
+        console.log("not empty");
+    }
+})
+document.getElementById("submit1").addEventListener('click', () => {
+    if (chaR1.race.value != "" && chaR2.race.value != "") {
+        document.getElementById('logContainer').style.display = "block";
+        console.log("not empty");
+    }
+})
+document.getElementById("submit2").addEventListener('click', () => {
+    if (chaR1.race.value != "" && chaR2.race.value != "") {
+        document.getElementById('creationPanel').style.display = "none";
+        console.log("not empty");
+    }
+})
+document.getElementById("submit1").addEventListener('click', () => {
+    if (chaR1.race.value != "" && chaR2.race.value != "") {
+        document.getElementById('creationPanel').style.display = "none";
+        console.log("not empty");
+    }
+})
+
+
+document.getElementsByClassName("btn").addEventListener("click", () => {
+    console.log("button");
+})
