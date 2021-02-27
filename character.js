@@ -19,8 +19,8 @@ function Person(name, race, item) {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
-    this.attack = function () {
-        this.currentHealth -= this.damage();
+    this.attack = function (name, name) {
+        name1.currenthealth -= name2.damage();
     }
     this.totalDamage = this.damage();
 
@@ -41,8 +41,8 @@ probability30 = () => {
 
 //image display on select 1st player
 function charSelect() {
-    var char = document.getElementById("race1").value;
-    var img = document.getElementById("charCarrousel");
+    var char = race1.value;
+    var img = charCarrousel;
     switch (char) {
 
         case "vampire":
@@ -61,14 +61,14 @@ function charSelect() {
             img.src = "pics/human.png";
             break;
         default:
-            document.getElementById("charCarrousel").src = "pics/no-char.png";
+            charCarrousel.src = "pics/no-char.png";
     }
 
 }
 //image display on select 2nd player
 function charSelect2() {
-    var char2 = document.getElementById("race2").value;
-    var img = document.getElementById("charCarrousel2");
+    var char2 = race2.value;
+    var img = charCarrousel2;
     switch (char2) {
 
         case "vampire":
@@ -87,37 +87,37 @@ function charSelect2() {
             img.src = "pics/human.png";
             break;
         default:
-            document.getElementById("charCarrousel2").src = "pics/no-char.png";
+            charCarrousel2.src = "pics/no-char.png";
     }
 
 }
 //create char object  in console
-var chaR1;
-document.getElementById("submit1").addEventListener("click", () => {
-    chaR1 = new Person(name1.value, race1.value, item1.value);
-    console.log(chaR1);
+var character1;
+submit1.addEventListener("click", () => {
+    character1 = new Person(name1.value, race1.value, item1.value);
+    console.log(character1);
 })
-var chaR2;
-document.getElementById("submit2").addEventListener("click", () => {
-    chaR2 = new Person(name2.value, race2.value, item2.value);
-    console.log(chaR2);
+var character2;
+submit2.addEventListener("click", () => {
+    character2 = new Person(name2.value, race2.value, item2.value);
+    console.log(character2);
 })
 
 //power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
 //when race is selected, health, heal and attack will be filled automatically.
 
 let raceSwitch1;
-document.getElementById("submit1").addEventListener("click", () => {
-    raceSwitch1 = ((document.getElementById("race1").value));;
+submit1.addEventListener("click", () => {
+    raceSwitch1 = race1.value;
     switch (raceSwitch1) {
         case 'orc':
-            chaR1.maxHealing *= 1.4;
+            character1.maxHealing *= 1.4;
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'vampire':
             //click hit
             this.attack *= 1.1;
-            chaR1.currentHealth = chaR1.currentHealth + (0.1 * chaR2.currentHealth);
+            character1.currenthealth = character1.currenthealth + (0.1 * character2.currenthealth);
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'human':
@@ -127,8 +127,8 @@ document.getElementById("submit1").addEventListener("click", () => {
         case 'elf':
             var deflect = probability30();
             if (deflect === true) {
-                chaR1.damage = 0;
-                chaR1.attack = chaR2.attack / 2;
+                character1.damage = 0;
+                character1.attack = character2.attack / 2;
             }
             console.log(`You are a ${raceSwitch1}.`);
             break;
@@ -144,29 +144,29 @@ document.getElementById("submit1").addEventListener("click", () => {
 
 
 let itemSwitch1;
-document.getElementById("submit1").addEventListener("click", () => {
-    itemSwitch1 = (document.getElementById("item1").value);
+submit1.addEventListener("click", () => {
+    itemSwitch1 = item1.value;
     switch (itemSwitch1) {
         case 'sword':
-            chaR1.maxDamage *= 1.3;
+            character1.maxDamage *= 1.3;
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'bow':
             var attackTwice = probability30();
             if (attackTwice === true) {
-                chaR1.attack = this.attack + this.attack;
+                character1.attack = this.attack + this.attack;
             }
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'boot':
             var dodge = probability30();
             if (dodge === true) {
-                chaR1.damage = 0;
+                character1.damage = 0;
             }
             console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'staff':
-            chaR1.maxHealing *= 1.2;
+            character1.maxHealing *= 1.2;
             console.log(`You have a ${itemSwitch1}.`);
             break;
         default:
@@ -179,26 +179,34 @@ document.getElementById("submit1").addEventListener("click", () => {
 //when race is selected, health, heal and attack will be filled automatically.
 
 let raceSwitch2;
-document.getElementById("submit2").addEventListener("click", () => {
-    raceSwitch2 = ((document.getElementById("race2").value));;
+submit2.addEventListener("click", () => {
+    raceSwitch2 = race2.value;
     switch (raceSwitch2) {
         case 'orc':
-            chaR2.maxHealing *= 1.4;
-            console.log(`You are a ${raceSwitch2}.`);
+            character2.maxHealing *= 1.4;
+            console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'vampire':
-            console.log(`You are a ${raceSwitch2}.`);
+            //click hit
+            this.attack *= 1.1;
+            character2.currenthealth = character2.currenthealth + (0.1 * character1.currenthealth);
+            console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'human':
-            console.log(`You are a ${raceSwitch2}.`);
+            this.damage *= 0.8;
+            console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'elf':
-            console.log(`You are a ${raceSwitch2}.`);
+            var deflect = probability30();
+            if (deflect === true) {
+                character2.damage = 0;
+                character2.attack = character1.attack / 2;
+            }
+            console.log(`You are a ${raceSwitch1}.`);
             break;
         default:
-            console.log(`You are a ${raceSwitch2}.`);
+            console.log(`You are a ${raceSwitch1}.`);
     }
-
 })
 
 
@@ -207,25 +215,33 @@ document.getElementById("submit2").addEventListener("click", () => {
 
 
 let itemSwitch2;
-document.getElementById("submit2").addEventListener("click", () => {
-    itemSwitch2 = (document.getElementById("item2").value);
+submit2.addEventListener("click", () => {
+    itemSwitch2 = item2.value;
     switch (itemSwitch2) {
         case 'sword':
-            chaR2.maxDamage *= 1.3;
-            console.log(`You have a ${itemSwitch2}.`);
+            character2.maxDamage *= 1.3;
+            console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'bow':
-            console.log(`You have a ${itemSwitch2}.`);
+            var attackTwice = probability30();
+            if (attackTwice === true) {
+                character2.attack = this.attack + this.attack;
+            }
+            console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'boot':
-            console.log(`You have a ${itemSwitch2}.`);
+            var dodge = probability30();
+            if (dodge === true) {
+                character2.damage = 0;
+            }
+            console.log(`You have a ${itemSwitch1}.`);
             break;
         case 'staff':
-            chaR2.maxHealing *= 1.2;
-            console.log(`You have a ${itemSwitch2}.`);
+            character2.maxHealing *= 1.2;
+            console.log(`You have a ${itemSwitch1}.`);
             break;
         default:
-            console.log(`You have a ${itemSwitch2}.`);
+            console.log(`You have a ${itemSwitch1}.`);
     }
 })
 
@@ -238,37 +254,65 @@ function probability30() {
 }
 
 
-if (chaR1 == null && chaR2 == null) {
-    document.getElementById('logContainer').style.display = "none";
+if (character1 == null && character2 == null) {
+    logContainer.style.display = "none";
     console.log("empty");
 }
 
-document.getElementById("submit2").addEventListener('click', () => {
-    if (chaR1.race.value != "" && chaR2.race.value != "") {
+submit2.addEventListener('click', () => {
+    if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
     }
 })
-document.getElementById("submit1").addEventListener('click', () => {
-    if (chaR1.race.value != "" && chaR2.race.value != "") {
+submit1.addEventListener('click', () => {
+    if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
     }
 })
-document.getElementById("submit2").addEventListener('click', () => {
-    if (chaR1.race.value != "" && chaR2.race.value != "") {
+submit2.addEventListener('click', () => {
+    if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
-document.getElementById("submit1").addEventListener('click', () => {
-    if (chaR1.race.value != "" && chaR2.race.value != "") {
+submit1.addEventListener('click', () => {
+    if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
 
 
-document.getElementsByClassName("btn").addEventListener("click", () => {
-    console.log("button");
+var LogOfMoves = moveLog.innerHTML;
+console.log(LogOfMoves);
+
+
+
+
+
+
+
+
+hit1.addEventListener("click", () => {
+    character1.attack();
+    return (hit1);
+    // console.log("hey")
+    // moveLog.innerHTML= 
+})
+var healing1 = heal1("click", () => {
+
+})
+var yielding1 = yield1("click", () => {
+
+})
+var hitting2 = hit2("click", () => {
+
+})
+var healing2 = heal2("click", () => {
+
+})
+var yielding2 = yield2("click", () => {
+
 })

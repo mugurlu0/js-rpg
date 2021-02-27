@@ -69,14 +69,14 @@
         </section>
         <section id="buttons">
             <div class="playerOne">
-                <button class="btn">hit</button>
-                <button class="btn">heal</button>
-                <button class="btn">yield</button>
+                <button id="hit1">hit</button>
+                <button id="heal1">heal</button>
+                <button id="yield1">yield</button>
             </div>
             <div class="playerTwo">
-                <button class="btn">hit</button>
-                <button class="btn">heal</button>
-                <button class="btn">yield</button>
+                <button id="hit2">hit</button>
+                <button id="heal2">heal</button>
+                <button id="yield2">yield</button>
             </div>
         </section>
         <section id="logContainer" class="container">
@@ -88,3 +88,27 @@
         <script src="gamelogic.js"></script>
     </body>
 </html>
+
+<!-- 
+<script>
+    function scrollToElementD() {
+        var topPos = document.getElementById('inner-element').offsetTop;
+        document.getElementById('container').scrollTop = topPos - 10;
+    }
+</script>
+
+<div id="container">
+    <p>A</p>
+    <p>B</p>
+    <p>C</p>
+    <p id="inner-element">D</p>
+    <p>E</p>
+    <p>F</p>
+</div>
+<button onclick="scrollToElementD()">SCROLL TO D</button>
+
+
+updateLog = () => {
+    log.innerHTML = logtxt;
+    logContainer.scrollTop = 9999999;
+} -->
