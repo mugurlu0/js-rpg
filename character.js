@@ -19,9 +19,24 @@ function Person(name, race, item) {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
-    this.attack = function (name, name) {
-        name1.currenthealth -= name2.damage();
+    this.attack = function (player) {
+      if (player == character1){
+        (  character1.currenthealth -= character2.damage());
+       if (character1.currenthealth<=0){
+        character1.currenthealth=0;
     }
+        console.log(character1.currenthealth);
+      } 
+      else{
+        (  character2.currenthealth -= character1.damage());
+        if (character2.currenthealth<=0){
+         character2.currenthealth=0;
+}
+         console.log(character2.currenthealth);
+      }
+    
+    }
+
     this.totalDamage = this.damage();
 
     this.displayChar = function () {
@@ -297,7 +312,7 @@ console.log(LogOfMoves);
 
 hit1.addEventListener("click", () => {
     character1.attack();
-    return (hit1);
+  
     // console.log("hey")
     // moveLog.innerHTML= 
 })
@@ -307,8 +322,8 @@ var healing1 = heal1("click", () => {
 var yielding1 = yield1("click", () => {
 
 })
-var hitting2 = hit2("click", () => {
-
+hit2.addEventListener("click", () => {
+character2.attack();
 })
 var healing2 = heal2("click", () => {
 
