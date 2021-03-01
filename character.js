@@ -10,9 +10,15 @@ function Person(name, race, item) {
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function () {
-        var healPoints = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-        return healPoints;
+    this.heal = function (player) {
+        if (player = character1){
+        var healing1 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        console.log (character1.currenthealth += healing1);
+    }
+    else{
+        var healing2 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        console.log (character2.currenthealth += healing2);
+    }
     };
 
     this.damage = function () {
@@ -21,18 +27,18 @@ function Person(name, race, item) {
     };
     this.attack = function (player) {
       if (player == character1){
-        (  character1.currenthealth -= character2.damage());
-       if (character1.currenthealth<=0){
-        character1.currenthealth=0;
+        (  character2.currenthealth -= character1.damage());
+       if (character2.currenthealth<=0){
+        character2.currenthealth=0;
     }
-        console.log(character1.currenthealth);
+        console.log(character2.currenthealth);
       } 
       else{
-        (  character2.currenthealth -= character1.damage());
-        if (character2.currenthealth<=0){
-         character2.currenthealth=0;
+        (  character1.currenthealth -= character2.damage());
+        if (character1.currenthealth<=0){
+         character1.currenthealth=0;
 }
-         console.log(character2.currenthealth);
+         console.log(character1.currenthealth);
       }
     
     }
@@ -312,22 +318,22 @@ console.log(LogOfMoves);
 
 hit1.addEventListener("click", () => {
     character1.attack();
-  
     // console.log("hey")
     // moveLog.innerHTML= 
 })
-var healing1 = heal1("click", () => {
-
+heal1.addEventListener("click", () => {
+    character1.heal();
 })
-var yielding1 = yield1("click", () => {
-
+yield1.addEventListener("click", () => {
+console.log(`${character1.name} yields`)
 })
 hit2.addEventListener("click", () => {
 character2.attack();
 })
-var healing2 = heal2("click", () => {
+heal2.addEventListener("click", () => {
+character2.heal();
 
 })
-var yielding2 = yield2("click", () => {
-
+yield2.addEventListener("click", () => {
+    console.log(`${character2.name} yields`)
 })
