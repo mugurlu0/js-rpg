@@ -11,37 +11,49 @@ function Person(name, race, item) {
     this.maxHealing = 30;
 
     this.heal = function (player) {
-        if (player = character1){
-        var healing1 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-        console.log (character1.currenthealth += healing1);
+        if (player = character1) {
+            var healing1 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+           
+        } if (character1.currenthealth >99) {
+            character1.currenthealth = 100;
+            healing1 = false;
+        
+        return(character1.currenthealth += healing1);
     }
-    else{
-        var healing2 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-        console.log (character2.currenthealth += healing2);
-    }
+       else if (player = character2) {
+            var healing2 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+         
+        } if (character2.currenthealth > 99) {
+            character2.currenthealth = 100;
+            healing2 = false;
+        }
+        return(character2.currenthealth += healing2);
+
     };
 
     this.damage = function () {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
-    this.attack = function (player) {
-      if (player == character1){
-        (  character2.currenthealth -= character1.damage());
-       if (character2.currenthealth<=0){
-        character2.currenthealth=0;
-    }
-        console.log(character2.currenthealth);
-      } 
-      else{
-        (  character1.currenthealth -= character2.damage());
-        if (character1.currenthealth<=0){
-         character1.currenthealth=0;
-}
-         console.log(character1.currenthealth);
-      }
+    this.attack1 = hit1.addEventListener("click", () => {
+            console.log(`${character1.name} hits`);
+            (character2.currenthealth -= character1.damage());
+            if (character2.currenthealth <= 0) {
+                character2.currenthealth = 0;
+            }
+            console.log(character2.currenthealth);
+        })
+        
+        this.attack2=hit2.addEventListener("click", () => {
+        console.log(`${character2.name} hits`);
+            (character1.currenthealth -= character2.damage());
+            if (character1.currenthealth <= 0) {
+                character1.currenthealth = 0;
+            }
+            console.log(character1.currenthealth);
+        
+    })
     
-    }
 
     this.totalDamage = this.damage();
 
@@ -316,23 +328,18 @@ console.log(LogOfMoves);
 
 
 
-hit1.addEventListener("click", () => {
-    character1.attack();
-    // console.log("hey")
-    // moveLog.innerHTML= 
-})
+
 heal1.addEventListener("click", () => {
     character1.heal();
+    console.log(`${character1.name} heals himself ${character1.heal()}`)
 })
 yield1.addEventListener("click", () => {
-console.log(`${character1.name} yields`)
+    console.log(`${character1.name} yields`)
 })
-hit2.addEventListener("click", () => {
-character2.attack();
-})
-heal2.addEventListener("click", () => {
-character2.heal();
 
+heal2.addEventListener("click", () => {
+    character2.heal();
+    console.log(`${character2.name} heals himself ${character2.heal()}`)
 })
 yield2.addEventListener("click", () => {
     console.log(`${character2.name} yields`)
