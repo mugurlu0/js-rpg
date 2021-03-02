@@ -120,6 +120,18 @@ select:hover{
 #moveLog{
     display: flex;
 }
-progress{
-    border:#1D4350 2px solid;
+
+
+        progress {
+  border: none;
+  width: 400px;
+  height: 30px;
+
+}
+progress::-webkit-progress-value {
+  background:green;
+}
+
+progress::-webkit-progress-bar {
+  background:#660000;
 }

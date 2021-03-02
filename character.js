@@ -1,3 +1,10 @@
+window.onload = function () {
+    new_game();
+}
+
+new_game = () => {
+    alert("new game")
+}
 //Use this script to generate your character
 function Person(name, race, item) {
     this.name = name;
@@ -34,6 +41,35 @@ function Person(name, race, item) {
         console.log(character2.currenthealth);
         char2.value = character2.currenthealth;
         label2.innerHTML = `${character2.currenthealth} %`;
+        hit1.disabled = true;
+        heal1.disabled = true;
+        hit2.disabled = false;
+        heal2.disabled = false;
+        
+if (character1.currenthealth==0){
+    moveLog.innerHTML= `${character2.name} wins`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
+    setInterval(function () {
+        window.location.reload();
+    }, 2000);
+}
+else if (character2.currenthealth==0){
+    moveLog.innerHTML= `${character1.name} wins`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
+    setInterval(function () {
+        window.location.reload();
+    }, 2000);
+}
     })
 
     this.attack2 = hit2.addEventListener("click", () => {
@@ -45,6 +81,34 @@ function Person(name, race, item) {
         console.log(character1.currenthealth);
         char1.value = character1.currenthealth;
         label1.innerHTML = `${character1.currenthealth} %`;
+        hit1.disabled = false;
+        heal1.disabled = false;
+        hit2.disabled = true;
+        heal2.disabled = true;
+        
+if (character1.currenthealth==0){
+    moveLog.innerHTML= `${character2.name} wins`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
+    setInterval(function () {
+        window.location.reload();
+    }, 2000);
+}
+else if (character2.currenthealth==0){
+    moveLog.innerHTML= `${character1.name} wins`;    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
+    setInterval(function () {
+        window.location.reload();
+    }, 2000);
+}
     })
 
 
@@ -86,8 +150,7 @@ function charSelect() {
         case "human":
             img.src = "pics/human.png";
             break;
-        default:
-            charCarrousel.src = "pics/no-char.png";
+
     }
 
 }
@@ -112,8 +175,7 @@ function charSelect2() {
         case "human":
             img.src = "pics/human.png";
             break;
-        default:
-            charCarrousel2.src = "pics/no-char.png";
+
     }
 
 }
@@ -329,12 +391,24 @@ heal1.addEventListener("click", () => {
     char1.value = character1.currenthealth;
     moveLog.innerHTML = (`${character1.name} heals himself ${character1.heal()}`);
     label1.innerHTML = `${character1.currenthealth} %`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = false;
+    heal2.disabled = false;
+    
 })
 yield1.addEventListener("click", () => {
     moveLog.innerHTML = `${character1.name} yields<br><br> GAME OVER`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
     setInterval(function () {
         window.location.reload();
     }, 5000);
+
 
 })
 
@@ -343,9 +417,19 @@ heal2.addEventListener("click", () => {
     char2.value = character2.currenthealth;
     moveLog.innerHTML = `${character2.name} heals himself ${character2.heal()}`;
     label2.innerHTML = `${character2.currenthealth} %`;
+    hit1.disabled = false;
+    heal1.disabled = false;
+    hit2.disabled = true;
+    heal2.disabled = true;
 })
 yield2.addEventListener("click", () => {
     moveLog.innerHTML = `${character2.name} yields<br><br> GAME OVER`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = true;
+    heal2.disabled = true;
+    yield1.disabled = true;
+    yield2.disabled = true;
     setInterval(function () {
         window.location.reload();
     }, 5000);
@@ -362,36 +446,46 @@ label1.style.display = "none";
 label2.style.display = "none";
 
 function randomChar() {
-    var raceRandom = Math.floor(Math.random() * 4);
+    raceRandom = Math.floor(Math.random() * 4);
     switch (raceRandom) {
         case 0:
             race1.value = "orc";
+            charCarrousel.src = "pics/orc.png";
             break;
         case 1:
             race1.value = "vampire";
+            charCarrousel.src = "pics/vamp.png";
             break;
         case 2:
             race1.value = "elf";
+            charCarrousel.src = "pics/elf.png";
             break;
         case 3:
             race1.value = "human";
+            charCarrousel.src = "pics/human.png";
             break;
     }
 }
+
 function randomChar2() {
     raceRandom2 = Math.floor(Math.random() * 4);
     switch (raceRandom2) {
         case 0:
             race2.value = "orc";
+            charCarrousel2.src = "pics/orc.png";
+            race2.
             break;
         case 1:
             race2.value = "vampire";
+            charCarrousel2.src = "pics/vamp.png";
             break;
         case 2:
             race2.value = "elf";
+            charCarrousel2.src = "pics/elf.png";
             break;
         case 3:
             race2.value = "human";
+            charCarrousel2.src = "pics/human.png";
             break;
     }
 }
@@ -416,7 +510,7 @@ function randomItem() {
 }
 
 random1.addEventListener("click", () => {
-    return randomChar() ,randomItem();
+    return randomChar(), randomItem();
 })
 random2.addEventListener("click", () => {
     return randomChar2(), randomItem2();
@@ -439,9 +533,4 @@ function randomItem2() {
             break;
     }
 
-}
-
-var progress= document.getElementsByTagName("progress");
-if(progress.value>=50){
-    progress.style.background="red";
 }

@@ -1,94 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RPG</title>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="mobile_first.css">
-    </head>
-    <body>
-        <header>
-            <h1>Battle Dungeon</h1>
-        </header>
-        <main>
-            <div id="charOne">
-                <label id="label1" for="progressBar">100%</label>
-<progress id="char1" value="100" max="100"></progress>
-                <img
-                id="charCarrousel" src="pics/vamp.png" alt="default">
-                <p id="health1"></p>
-            </div>
-            <p id="vs">vs</p>
-            <div id="charTwo">
-                <label id="label2" for="progressBar">100%</label>
-                <progress id=char2 value="100" max="100"></progress>
-                <img
-                id="charCarrousel2" src="pics/vamp.png" alt="default">
-                <p id="health2"></p>
-            </div>
 
-        </main>
-        <section id="creationPanel">
-            <form method="get" id="characterOne">
-                <input type="text" id="name1" name="name" placeholder="your char's name here" required>
-                <select name="race" id="race1" onchange="charSelect()">
-                    <option value="vampire">vampire</option>
-                    <option value="orc">orc</option>
-                    <option value="human">human</option>
-                    <option value="elf">elf</option>
-                </select>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile_first.css">
+</head>
 
-                <select name="item" id="item1">
-                    <option value="sword">sword</option>
-                    <option value="bow">bow</option>
-                    <option value="boot">boot</option>
-                    <option value="staff">staff</option>
-                </select>
-                <button id="random1">random</button>
-                <button id="submit1" type="button">confirm</button>
-            </form>
+<body>
+    <header>
+        <h1>Battle Dungeon</h1>
+    </header>
+    <main>
+        <div id="charOne">
+            <label id="label1" for="progressBar">100%</label>
+            <progress id="char1" value="100" max="100"></progress>
+            <img id="charCarrousel" src="pics/vamp.png" alt="default">
+            <p id="health1"></p>
+        </div>
+        <p id="vs">vs</p>
+        <div id="charTwo">
+            <label id="label2" for="progressBar">100%</label>
+            <progress id=char2 value="100" max="100"></progress>
+            <img id="charCarrousel2" src="pics/vamp.png" alt="default">
+            <p id="health2"></p>
+        </div>
+
+    </main>
+    <section id="creationPanel">
+        <form method="get" id="characterOne">
+            <input type="text" id="name1" name="name" placeholder="your char's name here" required>
+            <select name="race" id="race1" onchange="charSelect()">
+                <option value="vampire">vampire</option>
+                <option value="orc">orc</option>
+                <option value="human">human</option>
+                <option value="elf">elf</option>
+            </select>
+
+            <select name="item" id="item1">
+                <option value="sword">sword</option>
+                <option value="bow">bow</option>
+                <option value="boot">boot</option>
+                <option value="staff">staff</option>
+            </select>
+            <button id="random1">random</button>
+            <button id="submit1" type="button">confirm</button>
+        </form>
 
 
-            <form method="get" id="characterTwo">
-                <input type="text" id="name2" name="name" placeholder="your char's name here" required>
-                <select name="race" id="race2" onchange="charSelect2()">
-                    <option value="vampire">vampire<img src="pics/vamp.png" alt="vampire drawing">
-                    </option>
-                    <option value="orc">orc</option>
-                    <option value="human">human</option>
-                    <option value="elf">elf</option>
-                </select>
+        <form method="get" id="characterTwo">
+            <input type="text" id="name2" name="name" placeholder="your char's name here" required>
+            <select name="race" id="race2" onchange="charSelect2()">
+                <option value="vampire">vampire<img src="pics/vamp.png" alt="vampire drawing">
+                </option>
+                <option value="orc">orc</option>
+                <option value="human">human</option>
+                <option value="elf">elf</option>
+            </select>
 
-                <select name="item" id="item2">
-                    <option value="sword">sword</option>
-                    <option value="bow">bow</option>
-                    <option value="boot">boot</option>
-                    <option value="staff">staff</option>
-                </select>
-                <button id="random2">random</button>
-                <button id="submit2" type="button">confirm</button>
-            </form>
-        </section>
-        <section id="buttons">
-            <div id="playerOne">
-                <button id="hit1">hit</button>
-                <button id="heal1">heal</button>
-                <button id="yield1">yield</button>
-            </div>
-            <div id="playerTwo">
-                <button id="hit2">hit</button>
-                <button id="heal2">heal</button>
-                <button id="yield2">yield</button>
-            </div>
-        </section>
-        <section id="logContainer" class="container">
-            <h2>Moves</h2>
-            <p id="moveLog">Fight begins</p>
-        </section>
+            <select name="item" id="item2">
+                <option value="sword">sword</option>
+                <option value="bow">bow</option>
+                <option value="boot">boot</option>
+                <option value="staff">staff</option>
+            </select>
+            <button id="random2">random</button>
+            <button id="submit2" type="button">confirm</button>
+        </form>
+    </section>
+    <section id="buttons">
+        <div id="playerOne">
+            <button id="hit1">hit</button>
+            <button id="heal1">heal</button>
+            <button id="yield1">yield</button>
+        </div>
+        <div id="playerTwo">
+            <button id="hit2">hit</button>
+            <button id="heal2">heal</button>
+            <button id="yield2">yield</button>
+        </div>
+    </section>
+    <section id="logContainer" class="container">
+        <h2>Moves</h2>
+        <p id="moveLog">Fight begins</p>
+    </section>
 
-        <script src="character.js"></script>
-        <script src="gamelogic.js"></script>
-    </body>
+    <script src="character.js"></script>
+    <script src="gamelogic.js"></script>
+</body>
+
 </html>
