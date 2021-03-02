@@ -42,16 +42,19 @@ function Person(name, race, item) {
                 character2.currenthealth = 0;
             }
             console.log(character2.currenthealth);
+            char2.value= character2.currenthealth; 
+            label2.innerHTML= `${character2.currenthealth} %`;
         })
         
-        this.attack2=hit2.addEventListener("click", () => {
-        console.log(`${character2.name} hits`);
-            (character1.currenthealth -= character2.damage());
-            if (character1.currenthealth <= 0) {
-                character1.currenthealth = 0;
-            }
-            console.log(character1.currenthealth);
-        
+    this.attack2=hit2.addEventListener("click", () => {
+    console.log(`${character2.name} hits`);
+        (character1.currenthealth -= character2.damage());
+        if (character1.currenthealth <= 0) {
+            character1.currenthealth = 0;
+        }
+        console.log(character1.currenthealth);
+        char1.value = character1.currenthealth;
+        label1.innerHTML= `${character1.currenthealth} %`;
     })
     
 
@@ -129,11 +132,16 @@ var character1;
 submit1.addEventListener("click", () => {
     character1 = new Person(name1.value, race1.value, item1.value);
     console.log(character1);
+    
+    
+
 })
 var character2;
 submit2.addEventListener("click", () => {
     character2 = new Person(name2.value, race2.value, item2.value);
     console.log(character2);
+
+    
 })
 
 //power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
@@ -296,23 +304,31 @@ submit2.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
+        playerOne.style.display="block";
+playerTwo.style.display="block";
+char2.style.display="block";
+char1.style.display="block";
     }
 })
 submit1.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
+        playerOne.style.display="block";
+playerTwo.style.display="block";
+char2.style.display="block";
+char1.style.display="block";
     }
 })
 submit2.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
-        document.getElementById('creationPanel').style.display = "none";
+        // document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
 submit1.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
-        document.getElementById('creationPanel').style.display = "none";
+        // document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
@@ -344,3 +360,9 @@ heal2.addEventListener("click", () => {
 yield2.addEventListener("click", () => {
     console.log(`${character2.name} yields`)
 })
+
+char1.style.display="none";
+char2.style.display="none";
+
+playerOne.style.display="none";
+playerTwo.style.display="none";
