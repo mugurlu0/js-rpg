@@ -2,7 +2,7 @@ window.onload = function () {
     new_game();
 }
 
-new_game = () => {
+function new_game(){
     alert("new game")
 }
 //Use this script to generate your character
@@ -115,7 +115,7 @@ else if (character2.currenthealth==0){
     this.totalDamage = this.damage();
 
     this.displayChar = function () {
-        return console.log(`I am ${this.name}: a ${this.race} who wields a ${this.item}, my total health point are ${this.maxHealth}`);
+        return (`I am ${this.name}: a ${this.race} who wields a ${this.item}, my total health point are ${this.maxHealth}`);
     };
 }
 probability30 = () => {
@@ -183,7 +183,10 @@ function charSelect2() {
 var character1;
 submit1.addEventListener("click", () => {
     character1 = new Person(name1.value, race1.value, item1.value);
-    console.log(character1);
+    moveLog.innerHTML+=character1.displayChar();
+    console.log(character1)
+    
+    
 
 
 
@@ -192,7 +195,7 @@ var character2;
 submit2.addEventListener("click", () => {
     character2 = new Person(name2.value, race2.value, item2.value);
     console.log(character2);
-
+    moveLog.innerHTML+="<br> and <br> "+character2.displayChar();
 
 })
 
@@ -534,3 +537,49 @@ function randomItem2() {
     }
 
 }
+
+/*
+this.attack = function(playerID, player) {
+    this.totalDamage = this.damage();
+    if (player.race == "Human") {
+        this.totalDamage = Math.floor(this.totalDamage * 0.8);
+    }
+    if (player.race == "Elf" && success()) {
+        if (player == hero) { hero.totalDamage = this.totalDamage; }
+        else if (player == enemy) { enemy.totalDamage = this.totalDamage; }
+        this.totalDamage = 0;
+    }
+    if (player.item == "Boots" && success()) {
+        this.totalDamage = 0;
+    }
+    player.currentHealth = player.currentHealth - this.totalDamage;
+    if (player.currentHealth < 0) {
+        this.totalDamage = player.currentHealth + this.totalDamage ;
+        player.currentHealth = 0;
+    }
+    var HPbar = document.getElementById(playerID + "HP");
+    var HPbarDisplay = document.getElementById(playerID + "HPDisplay")
+    HPbar.value = player.currentHealth;
+    HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
+}
+// HANDLE RACE BONUS //
+raceBonus = (person) => {
+    switch(person.race) {
+        case "Orc":
+            person.maxHealth = person.maxHealth * 1.4;
+            break;
+    }
+}
+
+// HANDLE IETM BONUS //
+itemBonus = (person) => {
+    switch(person.item) {
+        case "Staff":
+            person.maxHealing = person.maxHealing * 1.2;
+            break;
+        case "Sword":
+            person.maxDamage = person.maxDamage * 1.3;
+            break;
+      }
+}
+*/
