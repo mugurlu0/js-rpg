@@ -10,24 +10,14 @@ function Person(name, race, item) {
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function (player) {
-        if (player = character1) {
-            var healing1 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-           
-        } if (character1.currenthealth >99) {
-            character1.currenthealth = 100;
-            healing1 = false;
-        
-        return(character1.currenthealth += healing1);
-    }
-       else if (player = character2) {
-            var healing2 = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
-         
-        } if (character2.currenthealth > 99) {
-            character2.currenthealth = 100;
-            healing2 = false;
+    this.heal = function () {
+        this.healing = Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        if (this.currenthealth > 99) {
+            this.currenthealth = 100;
+            this.healing = false;
         }
-        return(character2.currenthealth += healing2);
+        this.currenthealth += this.healing;
+        return this.currenthealth;
 
     };
 
@@ -36,27 +26,27 @@ function Person(name, race, item) {
         return damagePoints;
     };
     this.attack1 = hit1.addEventListener("click", () => {
-            console.log(`${character1.name} hits`);
-            (character2.currenthealth -= character1.damage());
-            if (character2.currenthealth <= 0) {
-                character2.currenthealth = 0;
-            }
-            console.log(character2.currenthealth);
-            char2.value= character2.currenthealth; 
-            label2.innerHTML= `${character2.currenthealth} %`;
-        })
-        
-    this.attack2=hit2.addEventListener("click", () => {
-    console.log(`${character2.name} hits`);
+        console.log(`${character1.name} hits`);
+        (character2.currenthealth -= character1.damage());
+        if (character2.currenthealth <= 0) {
+            character2.currenthealth = 0;
+        }
+        console.log(character2.currenthealth);
+        char2.value = character2.currenthealth;
+        label2.innerHTML = `${character2.currenthealth} %`;
+    })
+
+    this.attack2 = hit2.addEventListener("click", () => {
+        console.log(`${character2.name} hits`);
         (character1.currenthealth -= character2.damage());
         if (character1.currenthealth <= 0) {
             character1.currenthealth = 0;
         }
         console.log(character1.currenthealth);
         char1.value = character1.currenthealth;
-        label1.innerHTML= `${character1.currenthealth} %`;
+        label1.innerHTML = `${character1.currenthealth} %`;
     })
-    
+
 
     this.totalDamage = this.damage();
 
@@ -132,8 +122,8 @@ var character1;
 submit1.addEventListener("click", () => {
     character1 = new Person(name1.value, race1.value, item1.value);
     console.log(character1);
-    
-    
+
+
 
 })
 var character2;
@@ -141,7 +131,7 @@ submit2.addEventListener("click", () => {
     character2 = new Person(name2.value, race2.value, item2.value);
     console.log(character2);
 
-    
+
 })
 
 //power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
@@ -179,10 +169,7 @@ submit1.addEventListener("click", () => {
 
 })
 
-
-
 //create another switch for items, the values of the item will be added to the char's object(dodge, heal, damage, attack twice)
-
 
 let itemSwitch1;
 submit1.addEventListener("click", () => {
@@ -286,14 +273,11 @@ submit2.addEventListener("click", () => {
     }
 })
 
-
-
 function probability30() {
     var probability30Array = [true, false, false, true, false, true, false, false, false, false];
     var random = Math.floor(Math.random() * probability30Array.length);
     return probability30Array[random];
 }
-
 
 if (character1 == null && character2 == null) {
     logContainer.style.display = "none";
@@ -304,65 +288,160 @@ submit2.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
-        playerOne.style.display="block";
-playerTwo.style.display="block";
-char2.style.display="block";
-char1.style.display="block";
+        playerOne.style.display = "block";
+        playerTwo.style.display = "block";
+        char2.style.display = "block";
+        char1.style.display = "block";
+        label1.style.display = "block";
+        label2.style.display = "block";
     }
 })
 submit1.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
-        playerOne.style.display="block";
-playerTwo.style.display="block";
-char2.style.display="block";
-char1.style.display="block";
+        playerOne.style.display = "block";
+        playerTwo.style.display = "block";
+        char2.style.display = "block";
+        char1.style.display = "block";
+        label1.style.display = "block";
+        label2.style.display = "block";
     }
 })
 submit2.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
-        // document.getElementById('creationPanel').style.display = "none";
+        document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
 submit1.addEventListener('click', () => {
     if (character1.race.value != "" && character2.race.value != "") {
-        // document.getElementById('creationPanel').style.display = "none";
+        document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
 
-
 var LogOfMoves = moveLog.innerHTML;
 console.log(LogOfMoves);
 
-
-
-
-
-
-
-
-
 heal1.addEventListener("click", () => {
     character1.heal();
-    console.log(`${character1.name} heals himself ${character1.heal()}`)
+    char1.value = character1.currenthealth;
+    moveLog.innerHTML = (`${character1.name} heals himself ${character1.heal()}`);
+    label1.innerHTML = `${character1.currenthealth} %`;
 })
 yield1.addEventListener("click", () => {
-    console.log(`${character1.name} yields`)
+    moveLog.innerHTML = `${character1.name} yields<br><br> GAME OVER`;
+    setInterval(function () {
+        window.location.reload();
+    }, 5000);
+
 })
 
 heal2.addEventListener("click", () => {
     character2.heal();
-    console.log(`${character2.name} heals himself ${character2.heal()}`)
+    char2.value = character2.currenthealth;
+    moveLog.innerHTML = `${character2.name} heals himself ${character2.heal()}`;
+    label2.innerHTML = `${character2.currenthealth} %`;
 })
 yield2.addEventListener("click", () => {
-    console.log(`${character2.name} yields`)
+    moveLog.innerHTML = `${character2.name} yields<br><br> GAME OVER`;
+    setInterval(function () {
+        window.location.reload();
+    }, 5000);
+
 })
 
-char1.style.display="none";
-char2.style.display="none";
+char1.style.display = "none";
+char2.style.display = "none";
 
-playerOne.style.display="none";
-playerTwo.style.display="none";
+playerOne.style.display = "none";
+playerTwo.style.display = "none";
+
+label1.style.display = "none";
+label2.style.display = "none";
+
+function randomChar() {
+    var raceRandom = Math.floor(Math.random() * 4);
+    switch (raceRandom) {
+        case 0:
+            race1.value = "orc";
+            break;
+        case 1:
+            race1.value = "vampire";
+            break;
+        case 2:
+            race1.value = "elf";
+            break;
+        case 3:
+            race1.value = "human";
+            break;
+    }
+}
+function randomChar2() {
+    raceRandom2 = Math.floor(Math.random() * 4);
+    switch (raceRandom2) {
+        case 0:
+            race2.value = "orc";
+            break;
+        case 1:
+            race2.value = "vampire";
+            break;
+        case 2:
+            race2.value = "elf";
+            break;
+        case 3:
+            race2.value = "human";
+            break;
+    }
+}
+
+function randomItem() {
+    var itemRandom = Math.floor(Math.random() * 4);
+    switch (itemRandom) {
+        case 0:
+            item1.value = 'sword';
+            break;
+        case 1:
+            item1.value = 'bow';
+            break;
+        case 2:
+            item1.value = 'boot';
+            break;
+        case 3:
+            item1.value = 'staff';
+            break;
+    }
+
+}
+
+random1.addEventListener("click", () => {
+    return randomChar() ,randomItem();
+})
+random2.addEventListener("click", () => {
+    return randomChar2(), randomItem2();
+})
+
+function randomItem2() {
+    var itemRandom2 = Math.floor(Math.random() * 4);
+    switch (itemRandom2) {
+        case 0:
+            item2.value = 'sword';
+            break;
+        case 1:
+            item2.value = 'bow';
+            break;
+        case 2:
+            item2.value = 'boot';
+            break;
+        case 3:
+            item2.value = 'staff';
+            break;
+    }
+
+}
+
+var progress= document.getElementsByTagName("progress");
+if(progress.value>=50){
+    progress.style.background="red";
+}

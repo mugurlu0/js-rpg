@@ -14,20 +14,18 @@
         </header>
         <main>
             <div id="charOne">
-                <label id="label1" for="progressBar"></label>
+                <label id="label1" for="progressBar">100%</label>
 <progress id="char1" value="100" max="100"></progress>
                 <img
                 id="charCarrousel" src="pics/vamp.png" alt="default">
-                <!-- <p id="item1"></p> -->
                 <p id="health1"></p>
             </div>
             <p id="vs">vs</p>
             <div id="charTwo">
-                <label id="label2" for="progressBar"></label>
-                <progress id=char2 value="100" max="100"> your health 100% </progress>
+                <label id="label2" for="progressBar">100%</label>
+                <progress id=char2 value="100" max="100"></progress>
                 <img
                 id="charCarrousel2" src="pics/vamp.png" alt="default">
-                <!-- <p id="item2"></p> -->
                 <p id="health2"></p>
             </div>
 
@@ -48,12 +46,13 @@
                     <option value="boot">boot</option>
                     <option value="staff">staff</option>
                 </select>
+                <button id="random1">random</button>
                 <button id="submit1" type="button">confirm</button>
             </form>
 
 
             <form method="get" id="characterTwo">
-                <input type="text" id="name2" name="name" placeholder="your char's name here">
+                <input type="text" id="name2" name="name" placeholder="your char's name here" required>
                 <select name="race" id="race2" onchange="charSelect2()">
                     <option value="vampire">vampire<img src="pics/vamp.png" alt="vampire drawing">
                     </option>
@@ -68,6 +67,7 @@
                     <option value="boot">boot</option>
                     <option value="staff">staff</option>
                 </select>
+                <button id="random2">random</button>
                 <button id="submit2" type="button">confirm</button>
             </form>
         </section>

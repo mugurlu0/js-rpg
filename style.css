@@ -110,7 +110,7 @@ select:hover{
 
 #logContainer{
     grid-column: 2/4;
-    grid-row: 8/9;
+    grid-row: 4/5;
     justify-self: center;
     background-color: blanchedalmond;
     padding-left: 300px;
@@ -121,5 +121,5 @@ select:hover{
     display: flex;
 }
 progress{
-    border:#1D4350 2px solid
+    border:#1D4350 2px solid;
 }
