@@ -2,7 +2,7 @@ window.onload = function () {
     new_game();
 }
 
-function new_game(){
+function new_game() {
     alert("new game")
 }
 //Use this script to generate your character
@@ -23,8 +23,6 @@ function Person(name, race, item) {
             this.currenthealth = 100;
             this.healing = false;
         }
-        this.currenthealth += this.healing;
-        return this.currenthealth;
 
     };
 
@@ -32,86 +30,6 @@ function Person(name, race, item) {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
-    this.attack1 = hit1.addEventListener("click", () => {
-        console.log(`${character1.name} hits`);
-        (character2.currenthealth -= character1.damage());
-        if (character2.currenthealth <= 0) {
-            character2.currenthealth = 0;
-        }
-        console.log(character2.currenthealth);
-        char2.value = character2.currenthealth;
-        label2.innerHTML = `${character2.currenthealth} %`;
-        hit1.disabled = true;
-        heal1.disabled = true;
-        hit2.disabled = false;
-        heal2.disabled = false;
-        
-if (character1.currenthealth==0){
-    moveLog.innerHTML= `${character2.name} wins`;
-    hit1.disabled = true;
-    heal1.disabled = true;
-    hit2.disabled = true;
-    heal2.disabled = true;
-    yield1.disabled = true;
-    yield2.disabled = true;
-    setInterval(function () {
-        window.location.reload();
-    }, 2000);
-}
-else if (character2.currenthealth==0){
-    moveLog.innerHTML= `${character1.name} wins`;
-    hit1.disabled = true;
-    heal1.disabled = true;
-    hit2.disabled = true;
-    heal2.disabled = true;
-    yield1.disabled = true;
-    yield2.disabled = true;
-    setInterval(function () {
-        window.location.reload();
-    }, 2000);
-}
-    })
-
-    this.attack2 = hit2.addEventListener("click", () => {
-        console.log(`${character2.name} hits`);
-        (character1.currenthealth -= character2.damage());
-        if (character1.currenthealth <= 0) {
-            character1.currenthealth = 0;
-        }
-        console.log(character1.currenthealth);
-        char1.value = character1.currenthealth;
-        label1.innerHTML = `${character1.currenthealth} %`;
-        hit1.disabled = false;
-        heal1.disabled = false;
-        hit2.disabled = true;
-        heal2.disabled = true;
-        
-if (character1.currenthealth==0){
-    moveLog.innerHTML= `${character2.name} wins`;
-    hit1.disabled = true;
-    heal1.disabled = true;
-    hit2.disabled = true;
-    heal2.disabled = true;
-    yield1.disabled = true;
-    yield2.disabled = true;
-    setInterval(function () {
-        window.location.reload();
-    }, 2000);
-}
-else if (character2.currenthealth==0){
-    moveLog.innerHTML= `${character1.name} wins`;    hit1.disabled = true;
-    heal1.disabled = true;
-    hit2.disabled = true;
-    heal2.disabled = true;
-    yield1.disabled = true;
-    yield2.disabled = true;
-    setInterval(function () {
-        window.location.reload();
-    }, 2000);
-}
-    })
-
-
     this.totalDamage = this.damage();
 
     this.displayChar = function () {
@@ -183,20 +101,19 @@ function charSelect2() {
 var character1;
 submit1.addEventListener("click", () => {
     character1 = new Person(name1.value, race1.value, item1.value);
-    moveLog.innerHTML+=character1.displayChar();
-    console.log(character1)
-    
-    
-
-
-
+    raceSpec();
+    itemSpec();
+    moveLog.innerHTML += "<br><br> " + character1.displayChar();
+    console.log(character1);
 })
+
 var character2;
 submit2.addEventListener("click", () => {
     character2 = new Person(name2.value, race2.value, item2.value);
+    raceSpec();
+    itemSpec();
     console.log(character2);
-    moveLog.innerHTML+="<br> and <br> "+character2.displayChar();
-
+    moveLog.innerHTML += "<br><br> " + character2.displayChar();
 })
 
 //power and strength rely on char Race -> switch. values of switch will be stored in health, heal, attack.
@@ -221,11 +138,6 @@ submit1.addEventListener("click", () => {
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'elf':
-            var deflect = probability30();
-            if (deflect === true) {
-                character1.damage = 0;
-                character1.attack = character2.attack / 2;
-            }
             console.log(`You are a ${raceSwitch1}.`);
             break;
         default:
@@ -276,25 +188,16 @@ submit2.addEventListener("click", () => {
     raceSwitch2 = race2.value;
     switch (raceSwitch2) {
         case 'orc':
-            character2.maxHealing *= 1.4;
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'vampire':
-            //click hit
-            this.attack *= 1.1;
-            character2.currenthealth = character2.currenthealth + (0.1 * character1.currenthealth);
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'human':
-            this.damage *= 0.8;
             console.log(`You are a ${raceSwitch1}.`);
             break;
         case 'elf':
-            var deflect = probability30();
-            if (deflect === true) {
-                character2.damage = 0;
-                character2.attack = character1.attack / 2;
-            }
+
             console.log(`You are a ${raceSwitch1}.`);
             break;
         default:
@@ -398,7 +301,7 @@ heal1.addEventListener("click", () => {
     heal1.disabled = true;
     hit2.disabled = false;
     heal2.disabled = false;
-    
+
 })
 yield1.addEventListener("click", () => {
     moveLog.innerHTML = `${character1.name} yields<br><br> GAME OVER`;
@@ -538,48 +441,116 @@ function randomItem2() {
 
 }
 
-/*
-this.attack = function(playerID, player) {
-    this.totalDamage = this.damage();
-    if (player.race == "Human") {
-        this.totalDamage = Math.floor(this.totalDamage * 0.8);
+hit2.addEventListener("click", () => {
+    moveLog.innerHTML = `${character2.name} hits`;
+    (character1.currenthealth -= character2.damage());
+    if (character1.race == "human") {
+        character2.totalDamage = Math.floor(this.totalDamage * 0.8);
+        console.log(character2.totalDamage);
     }
-    if (player.race == "Elf" && success()) {
-        if (player == hero) { hero.totalDamage = this.totalDamage; }
-        else if (player == enemy) { enemy.totalDamage = this.totalDamage; }
-        this.totalDamage = 0;
+    if (character1.item == "boot" && probability30()) {
+        character2.totalDamage = 0;
+        console.log(character1.name + "dodges")
     }
-    if (player.item == "Boots" && success()) {
-        this.totalDamage = 0;
+    if (character1.race == "elf") {
+        if (probability30() == true) {
+            character2.currenthealth -= character2.totalDamage / 2;
+            moveLog.innerHTML = `${character1.name} deflects the attack`;
+            character2.totalDamage = 0;
+        }
     }
-    player.currentHealth = player.currentHealth - this.totalDamage;
-    if (player.currentHealth < 0) {
-        this.totalDamage = player.currentHealth + this.totalDamage ;
-        player.currentHealth = 0;
+    if (character2.race == 'vampire') {
+        character2.currenthealth += Math.round((0.1 * character1.currenthealth));
+        character1.currenthealth -= Math.round((0.1 * character1.currenthealth));
+        moveLog.innerHTML = `${character2.name} steals life from ${character1.name}`
     }
-    var HPbar = document.getElementById(playerID + "HP");
-    var HPbarDisplay = document.getElementById(playerID + "HPDisplay")
-    HPbar.value = player.currentHealth;
-    HPbarDisplay.innerHTML = "HP: "+ HPbar.value + "/" + HPbar.max;
-}
-// HANDLE RACE BONUS //
-raceBonus = (person) => {
-    switch(person.race) {
+    if (character1.currenthealth < 1) {
+        character1.currenthealth = 0;
+    }
+    console.log(character1.currenthealth);
+    char1.value = character1.currenthealth;
+    label1.innerHTML = `${character1.currenthealth} %`;
+    hit1.disabled = false;
+    heal1.disabled = false;
+    hit2.disabled = true;
+    heal2.disabled = true;
+
+    if (character1.currenthealth == 0) {
+        moveLog.innerHTML = `${character2.name} wins`;
+        hit1.disabled = true;
+        heal1.disabled = true;
+        hit2.disabled = true;
+        heal2.disabled = true;
+        yield1.disabled = true;
+        yield2.disabled = true;
+        setInterval(function () {
+            window.location.reload();
+        }, 2000);
+    }
+})
+
+hit1.addEventListener("click", () => {
+    moveLog.innerHTML = `${character1.name} hits`;
+    (character2.currenthealth -= character1.damage());
+    if (character2.race == "human") {
+        character1.totalDamage = Math.floor(this.totalDamage * 0.8);
+        moveLog.innerHTML = (character1.totalDamage);
+    }
+    if (character2.item == "boot" && probability30()) {
+        character1.totalDamage = 0;
+        moveLog.innerHTML = (character2.name + "dodges")
+    }
+    if (character2.race == "elf") {
+        if (probability30()) {
+            character1.currenthealth -= character1.totalDamage / 2;
+            moveLog.innerHTML = `${character2.name} deflects the attack`;
+            character1.totalDamage = 0;
+        }
+    }
+    if (character1.race == 'vampire') {
+        character1.currenthealth += Math.round((0.1 * character2.currenthealth));
+        character2.currenthealth -= Math.round((0.1 * character2.currenthealth));
+        moveLog.innerHTML = `${character1.name} steals life from ${character2.name}`
+    }
+    if (character2.currenthealth < 1) {
+        character2.currenthealth = 0;
+    }
+    char2.value = character2.currenthealth;
+    label2.innerHTML = `${character2.currenthealth} %`;
+    hit1.disabled = true;
+    heal1.disabled = true;
+    hit2.disabled = false;
+    heal2.disabled = false;
+
+    if (character2.currenthealth == 0) {
+        moveLog.innerHTML = `${character1.name} wins`;
+        hit1.disabled = true;
+        heal1.disabled = true;
+        hit2.disabled = true;
+        heal2.disabled = true;
+        yield1.disabled = true;
+        yield2.disabled = true;
+        setInterval(function () {
+            window.location.reload();
+        }, 2000);
+    }
+})
+
+function raceSpec() {
+    switch (player.race) {
         case "Orc":
-            person.maxHealth = person.maxHealth * 1.4;
+            player.maxHealth = player.maxHealth * 1.4;
             break;
     }
 }
 
-// HANDLE IETM BONUS //
-itemBonus = (person) => {
-    switch(person.item) {
+function itemSpec() {
+    switch (player.item) {
         case "Staff":
-            person.maxHealing = person.maxHealing * 1.2;
+            player.maxHealing = player.maxHealing * 1.2;
             break;
         case "Sword":
-            person.maxDamage = person.maxDamage * 1.3;
+            player.maxDamage = player.maxDamage * 1.3;
             break;
-      }
+    }
 }
-*/
