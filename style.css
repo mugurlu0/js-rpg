@@ -3,14 +3,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
 @media only screen and (min-width: 1000px){
 html{
-    height: 90vh;
+    height: 100vh;
     width: 100%;
+    
 }
 
 body{
-    background: #1D4350;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #A43931, #1D4350);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #A43931, #1D4350); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #5A3F37;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2C7744, #5A3F37);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2C7744, #5A3F37); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
     display: grid;
     grid-template-columns: 30px 1fr 1fr 30px;
     gap: auto;
@@ -30,7 +31,7 @@ header{
 }
 h1{
     font-size: 35px;
-    color:rgb(46, 42, 42);
+    color:rgb(196, 195, 206);
 }
 main{
     grid-row: 2/3;
@@ -47,7 +48,9 @@ main{
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;   
     margin: 60px;
+    
 }
+
 #playerOne{
 justify-self: start;    
 }
@@ -73,7 +76,7 @@ justify-self: start;
 #creationPanel{
     grid-column: 2/4;
     grid-row:3/4;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2,1fr) ;
     grid-template-rows: auto;
     margin: 25px;
@@ -83,16 +86,19 @@ justify-self: start;
 #characterOne{
     grid-column: 1/2;
     grid-row: inherit;
+    
+
 }
 #characterTwo{
     grid-column: 2/3;
     grid-row: inherit;
 }
 
+}
+
 button{
     border: 2px dashed #000000;
     background: transparent;
-    
 }
 
 button:hover {
@@ -114,7 +120,7 @@ select:focus{
 select:hover{
     background-color: #000;
     color:#A43931;
-}}
+}
 
 #logContainer{
     grid-column: 2/4;
@@ -143,4 +149,12 @@ progress::-webkit-progress-value {
 
 progress::-webkit-progress-bar {
   background:#660000;
+}
+
+h2{
+    text-align: center;
+}
+
+label{
+    text-align: center;
 }
