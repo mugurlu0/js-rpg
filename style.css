@@ -37,7 +37,7 @@ main{
     grid-column: 2/4;
     display: grid;
     grid-template-columns: 1fr 60px 1fr;
-    justify-items: center;
+    place-items: center;
     
 }
 #buttons{
@@ -45,17 +45,24 @@ main{
     grid-row:5/6;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    justify-content:space-around;
+    grid-template-rows: auto;   
     margin: 60px;
 }
-
+#playerOne{
+justify-self: start;    
+}
+#playerTwo{
+    justify-self: end;    
+    }
+    
 #charOne img{
     grid-column: 1/2;
+    place-items: center;
 }
 #charTwo img{
     grid-column: 2/3;
     grid-row: 2/3;
+    place-items: center
 }
 #vs{
     justify-self: center;
@@ -72,6 +79,7 @@ main{
     margin: 25px;
 
 }
+
 #characterOne{
     grid-column: 1/2;
     grid-row: inherit;
@@ -111,18 +119,19 @@ select:hover{
 #logContainer{
     grid-column: 2/4;
     grid-row: 4/5;
-    justify-self: center;
+    place-self: center;
     background-color: blanchedalmond;
-    padding-left: 300px;
-    padding-right: 300px;
+    width: 60%; 
+    height: 100%;
+    
     /* margin: 40px; */
 }
 #moveLog{
     display: flex;
+    justify-content: center;
 }
 
-
-        progress {
+ progress {
   border: none;
   width: 400px;
   height: 30px;
