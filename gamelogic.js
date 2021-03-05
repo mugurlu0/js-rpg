@@ -60,7 +60,7 @@ submit1.addEventListener("click", () => {
         character1.maxHealing = character1.maxHealing * 1.2;
     }
     if (character1.item == "sword") {
-        player.maxDamage = player.maxDamage * 1.3;
+        character1.maxDamage = character1.maxDamage * 1.3;
     }
 
     moveLog.innerHTML += "<br><br> " + character1.displayChar();
@@ -78,7 +78,7 @@ submit2.addEventListener("click", () => {
         character2.maxHealing = character2.maxHealing * 1.2;
     }
     if (character2.item == "sword") {
-        player.maxDamage = player.maxDamage * 1.3;
+        character2.maxDamage = character2.maxDamage * 1.3;
     }
 
     console.log(character2);
