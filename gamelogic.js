@@ -101,7 +101,7 @@ if (character1 == null && character2 == null) {
 }
 
 submit2.addEventListener('click', () => {
-    if (race1.value != "" && race2.value != "") {
+    if (character1.race != "" && character2.race != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
         playerOne.style.display = "block";
@@ -113,7 +113,7 @@ submit2.addEventListener('click', () => {
     }
 })
 submit1.addEventListener('click', () => {
-    if (race1.value != "" && race2.value != "") {
+    if (character1.race != "" && character2.race != "") {
         document.getElementById('logContainer').style.display = "block";
         console.log("not empty");
         playerOne.style.display = "block";
@@ -125,13 +125,13 @@ submit1.addEventListener('click', () => {
     }
 })
 submit2.addEventListener('click', () => {
-    if (character1.race.value != "" && character2.race.value != "") {
+    if (character1.race != "" && character2.race != "") {
         document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
 })
 submit1.addEventListener('click', () => {
-    if (character1.race.value != "" && character2.race.value != "") {
+    if (character1.race != "" && character2.race != "") {
         document.getElementById('creationPanel').style.display = "none";
         console.log("not empty");
     }
