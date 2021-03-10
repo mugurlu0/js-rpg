@@ -8,6 +8,10 @@ function Person(name, race, item) {
     this.race = race;
     this.item = item;
     this.currenthealth = 100;
+    /*    case "orc":
+            //40% more max health
+            character.maxHealth *=1.4;
+            break;*/
     this.maxHealth = 100;
 
     this.min = 3;
@@ -22,11 +26,27 @@ function Person(name, race, item) {
         return Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
     };
 
+    /* 
+     case "staff":
+            //20% increase in healing
+            character.heal = Math.round(character.heal() * 1.2);
+            break;
+    */
+
+
     this.damage = function () {
         var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
         return damagePoints;
     };
     this.totalDamage = this.damage();
+    /*
+    
+        case "human":
+            //20% less damage taken
+            character.totalDamage *= 0.8;
+            break;
+    }
+    */
 
     this.displayChar = function () {
         return (`I am ${this.name}: a ${this.race} who wields a ${this.item}, my total health point are ${this.maxHealth}`);

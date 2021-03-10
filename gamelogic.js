@@ -13,6 +13,7 @@ if (character1 == null && character2 == null) {
 }
 
 var charAttack=false;
+var opAttack=false;
 
 display = () => {
     if (character1.race != "" && character2.race != "") {
@@ -50,68 +51,54 @@ attack = (character, opponent) => {
     moveLog.innerHTML = `${character.name} hits`;
     if (opponent.currenthealth<=0){
         opponent.currenthealth = 0;
-        charAttack=true;
     };
   return opponent.currenthealth -= character.totalDamage;
-}
 
-function charSpecs(item, race, character, opponent, hitOpponent) {
-    race.value;
-    switch (race.value) {
-        case "vampire":
-            //10% lifesteal from opponents current health at start of the vampire's turn.
-            if (hitOpponent.disabled == true) {
-                character.currenthealth += Math.round(0.1 * opponent.currenthealth);
-                opponent.currenthealth -=Math.round(0.1 * opponent.currenthealth);
-                moveLog.innerHTML = `${opponent.name} steals life from ${character.name}`
-            }
-            break;
-        case "orc":
-            //40% more max health
-            character.maxHealth *= 1.4;
-            character.currenthealth *= 1.4;
-            break;
-        case "elf":
+  /*switch  case "sword":
+            //30% more damage
+            opponent.totalDamage = Math.round(opponent.totalDamage *1.3);
+            break; 
+            
+                    case "elf":
             //30% chance to deflect the attack back to the opponent. The attacker takes damage equal to 50% of the original hit. The elf takes no damage.
-            if (probability30() == true && charAttack==true) {
+            if (probability30() == true && attackChar==true) {
                
                 moveLog.innerHTML = `${character.name} deflects the attack`;
-                charAttack==false;
-                return opponent.totalDamage = 0,
-                opponent.currenthealth -= opponent.totalDamage / 2;
+                attackChar==false;
+                var elf = opponent.totalDamage;
+                opponent.currenthealth -= Math.round(elf/ 2);
+                character.currenthealth += elf;
                 
             }
             break;
-        case "human":
-            //20% less damage taken
-            character.totalDamage *= 0.8;
+            
+              case "vampire":
+            //10% lifesteal from opponents current health at start of the vampire's turn.
+            if (hitChar.disabled == false) {
+                character.currenthealth += Math.round(0.1 * opponent.currenthealth);
+                opponent.currenthealth -=Math.round(0.1 * opponent.currenthealth);
+                moveLog.innerHTML += `${opponent.name} steals life from ${character.name}`;
+                console.log("steals");
+            }
             break;
-    }
-    item.value;
-    switch (item.value) {
-        case "boots":
+            
+                    case "boots":
             //30% chance to dodge an attack
             if (probability30() == true) {
                 character.totalDamage = 0;
                 moveLog.innerHTML = `${character.name} dodges the attack`;
             }
             break;
-        case "sword":
-            //30% more damage
-            opponent.totalDamage = Math.round(opponent.totalDamage *1.3);
-            break;
-        case "bow":
+       
+                    case "bow":
             //30% chance to attack twice
             if (probability30() == true && charAttack==true) {
                 moveLog.innerHTML = `${character.name} attacks twice`;
                 charAttack=false;
             };
             break;
-        case "staff":
-            //20% increase in healing
-            character.heal() = Math.round(character.heal() * 1.2);
-            break;
-    }
+            */
+
 }
 
 function probability30() {
@@ -130,22 +117,15 @@ allDisabled = () => {
 }
 
 gameOver = (character, opponent) => {
-    if (character.currenthealth < 1) {
+        if(character.currenthealth <1){
         character.currenthealth = 0;
-        moveLog.innerHTML = `${character.name} loses<br><br> GAME OVER<br><br> ${opponent.name} wins`;
+            moveLog.innerHTML = `${character.name} loses<br><br> GAME OVER<br><br> ${opponent.name} wins`;
         allDisabled();
         setInterval(function () {
             window.location.reload();
         }, 5000);
     }
-    else if(opponent.currenthealth < 1){
-        opponent.currenthealth = 0;
-        moveLog.innerHTML = `${opponent.name} loses<br><br> GAME OVER<br><br> ${character.name} wins`;
-        allDisabled();
-        setInterval(function () {
-            window.location.reload();
-        }, 5000);
-    }
+   
     else if (yieldWasClicked == true) {
         moveLog.innerHTML = `${character.name} yields<br><br> GAME OVER<br><br> ${opponent.name} wins`;
         allDisabled();
@@ -160,7 +140,6 @@ var character1;
 submit1.addEventListener("click", () => {
     character1 = new Person(name1.value, race1.value, item1.value);
     moveLog.innerHTML += "<br> " + character1.displayChar();
-    charSpecs(item1, race1, character1, character2, hit1);
     progressBar(label1, character1, char1);
     progressBar(label2, character2, char2);
     display();
@@ -170,7 +149,6 @@ var character2;
 submit2.addEventListener("click", () => {
     character2 = new Person(name2.value, race2.value, item2.value);
     moveLog.innerHTML += "<br><br> " + character2.displayChar();
-    charSpecs(item2, race2, character2, character1, hit2);
     progressBar(label1, character1, char1);
     progressBar(label2, character2, char2);
     display();
@@ -185,7 +163,7 @@ heal1.addEventListener("click", () => {
     moveLog.innerHTML = (`${character1.name} heals himself`);
     progressBar(label1, character1, char1);
     turn(hit1, heal1, hit2, heal2);
-    charSpecs(item1, race1, character1, character2, hit1);
+
 })
 
 heal2.addEventListener("click", () => {
@@ -193,7 +171,6 @@ heal2.addEventListener("click", () => {
     moveLog.innerHTML = `${character2.name} heals himself`;
     progressBar(label2, character2, char2);
     turn(hit2, heal2, hit1, heal1);
-    charSpecs(item2, race2, character2, character1, hit2);
 })
 
 random1.addEventListener("click", () => {
@@ -207,17 +184,18 @@ hit1.addEventListener("click", () => {
     attack(character1, character2);
     progressBar(label2, character2, char2);
     turn(hit1, heal1, hit2, heal2);
-    charAttack=false;
-    charSpecs(item1, race1, character1, character2, hit1);
+    gameOver(character2, character1);
+    charAttack=true;
+opAttack=false;
 })
 
 hit2.addEventListener("click", () => {
     attack(character2, character1);
     progressBar(label1, character1, char1);
     turn(hit2, heal2, hit1, heal1);
-    gameOver(character2, character1);
+    gameOver(character1, character2);
     charAttack=false;
-    charSpecs(item2, race2, character2, character1, hit2);
+    opAttack=true;
 })
 
 yield1.addEventListener("click", () => {
