@@ -1,6 +1,6 @@
-window.onload = ()=> {
-    alert("new game")        
-    };
+window.onload = () => {
+    alert("new game")
+};
 
 //Use this script to generate your character
 function Person(name, race, item) {
@@ -8,12 +8,7 @@ function Person(name, race, item) {
     this.race = race;
     this.item = item;
     this.currenthealth = 100;
-    /*    case "orc":
-            //40% more max health
-            character.maxHealth *=1.4;
-            break;*/
     this.maxHealth = 100;
-
     this.min = 3;
     this.maxDamage = 20;
     this.maxHealing = 30;
@@ -23,30 +18,27 @@ function Person(name, race, item) {
             this.currenthealth = 100;
             this.heal = false;
         }
-        return Math.floor(Math.random() * (this.maxHealing - this.min) + this.min);
+        //20% increase in healing
+        if (item.value == "staff") {
+
+            return console.log("staff bonus"), Math.round((Math.random() * (this.maxHealing - this.min) + this.min) * 1.2);
+        } else {
+            return Math.floor(Math.random() * (this.maxHealing - this.min) + this.min)
+        };
     };
 
-    /* 
-     case "staff":
-            //20% increase in healing
-            character.heal = Math.round(character.heal() * 1.2);
-            break;
-    */
+
 
 
     this.damage = function () {
-        var damagePoints = Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
-        return damagePoints;
+        if (race.value == "human") {
+            //20% less damage taken
+            return (Math.floor(Math.random() * (this.maxDamage - this.min) + this.min)) * 0.8
+        } else {
+            return Math.floor(Math.random() * (this.maxDamage - this.min) + this.min);
+        }
     };
     this.totalDamage = this.damage();
-    /*
-    
-        case "human":
-            //20% less damage taken
-            character.totalDamage *= 0.8;
-            break;
-    }
-    */
 
     this.displayChar = function () {
         return (`I am ${this.name}: a ${this.race} who wields a ${this.item}, my total health point are ${this.maxHealth}`);
