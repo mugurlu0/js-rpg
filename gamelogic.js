@@ -43,7 +43,7 @@ progressBar = (label, character, char) => {
     if (character.currenthealth > 99) {
         character.currenthealth = character.maxHealth
     }
-    label.innerHTML = `${Math.round(character.currenthealth)} / ${character.maxHealth}`,
+    label.innerHTML = `${character.currenthealth} / ${character.maxHealth}`,
         char.value = character.currenthealth;
 }
 
@@ -176,7 +176,7 @@ heal1.addEventListener("click", () => {
 })
 
 heal2.addEventListener("click", () => {
-    character2.currenthealth += character2.heal;
+    character2.currenthealth += character2.heal();
     moveLog.innerHTML = `${character2.name} heals himself`;
     progressBar(label2, character2, char2);
     turn(hit2, heal2, hit1, heal1);

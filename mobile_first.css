@@ -8,7 +8,7 @@ display: none;
 }
 @media only screen and (max-width:999px)and (orientation:landscape){
     html {
-        height: 100vh;
+        max-height: 50vh;
         width: 100%;
 
     }
